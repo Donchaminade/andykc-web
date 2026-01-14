@@ -8,6 +8,7 @@ import AppRouter from '@/router/AppRouter';
 import ScrollToTop from '@/components/layout/ScrollToTop';
 import AnimatedBackground from '@/components/layout/AnimatedBackground';
 import SplashScreen from '@/components/layout/SplashScreen';
+import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -27,7 +28,7 @@ const App = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-background text-foreground relative overflow-x-hidden">
+      <div className="flex flex-col min-h-screen bg-background text-foreground relative">
         <AnimatedBackground />
         <Header />
         <main className="flex-grow relative z-10">
@@ -35,6 +36,7 @@ const App = () => {
         </main>
         <Footer />
         <Toaster />
+        <ScrollToTopButton />
       </div>
     </Router>
   );
