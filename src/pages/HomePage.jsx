@@ -6,6 +6,7 @@ import React, { useState, useEffect, useCallback } from 'react';
     import { Users, Briefcase, ArrowRight, ChevronLeft, ChevronRight as ChevronRightIcon, Award, Target, Lightbulb, TrendingUp } from 'lucide-react';
     import { useNavigate } from 'react-router-dom';
     import { useInView } from 'react-intersection-observer';
+import VideoPlayer from '@/components/ui/VideoPlayer';
 
     const carouselImages = [
       { src: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80", alt: "Équipe collaborant dans un bureau moderne aux tons chauds, vue panoramique" },
@@ -183,6 +184,7 @@ import React, { useState, useEffect, useCallback } from 'react';
                 variants={sectionTitleVariants}
               >
                 Bienvenue chez Andy KGZ Consulting
+                <br />
               </motion.h2>
               <motion.p 
                 className="text-lg md:text-xl text-foreground/80 mb-8 max-w-3xl mx-auto px-4"
@@ -389,16 +391,16 @@ import React, { useState, useEffect, useCallback } from 'react';
               </div>
             </AnimatedSection>
 
-            <AnimatedSection className="bg-primary/10 rounded-lg border border-border relative overflow-hidden">
-                <motion.div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23${typeof window !== 'undefined' ? getComputedStyle(document.documentElement).getPropertyValue('--primary').trim().split(" ").map(c => parseInt(c).toString(16).padStart(2,'0')).join("") : 'A67B5B'}' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                    }}
-                    animate={{ backgroundPositionX: ['0px', '60px'], backgroundPositionY: ['0px', '60px']}}
-                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                />
-              <div className="relative z-10 p-8 md:p-12">
+            <AnimatedSection className="bg-primary/10 rounded-lg border border-border relative overflow-hidden p-8 md:p-12">
+              <motion.div
+                  className="absolute inset-0 opacity-20"
+                  style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23${typeof window !== 'undefined' ? getComputedStyle(document.documentElement).getPropertyValue('--primary').trim().split(" ").map(c => parseInt(c).toString(16).padStart(2,'0')).join("") : 'A67B5B'}' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                  }}
+                  animate={{ backgroundPositionX: ['0px', '60px'], backgroundPositionY: ['0px', '60px']}}
+                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              />
+              <div className="relative z-10">
                 <motion.h2 
                   className="text-4xl font-bold text-center text-accent mb-12 title-center-fix"
                   variants={sectionTitleVariants}
@@ -408,37 +410,18 @@ import React, { useState, useEffect, useCallback } from 'react';
                 >
                   Découvrez notre univers en vidéo
                 </motion.h2>
-                <div className="grid md:grid-cols-2 gap-10 items-center">
-                  <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                  >
-                    <h3 className="text-3xl font-bold text-accent mb-4">Notre approche en quelques minutes</h3>
-                    <p className="text-foreground/80 text-justify mb-6">
-                        Plongez au cœur de l'univers d'Andy KGZ Consulting et découvrez comment nous transformons les carrières et optimisons le recrutement freelance. Cette vidéo vous présente notre philosophie, nos méthodes de coaching de carrière innovantes et notre expertise en gestion de talents pour les entreprises.
-                    </p>
-                    <Button onClick={() => navigate('/a-propos')} variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary group">
-                        En savoir plus sur AKC <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
-                    </Button>
-                  </motion.div>
-                  <motion.div 
-                    className="aspect-w-16 aspect-h-9 max-w-4xl mx-auto shadow-2xl rounded-lg overflow-hidden border-2 border-primary/50"
-                    initial={{ opacity:0, scale:0.9}}
-                    whileInView={{ opacity:1, scale:1}}
-                    viewport={{ once: true }}
-                    transition={{duration: 0.6, delay: 0.4}}
-                  >
-                    <iframe 
-                      src="https://www.youtube.com/embed/fLvHhYh3K9o" 
-                      title="Présentation de Andy KGZ Consulting - Coaching carrière et recrutement" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                      allowFullScreen
-                      className="w-full h-full"
-                    ></iframe>
-                  </motion.div>
-                </div>
+                <motion.div
+                  initial={{ opacity:0, scale:0.9}}
+                  whileInView={{ opacity:1, scale:1}}
+                  viewport={{ once: true }}
+                  transition={{duration: 0.6, delay: 0.4}}
+                  className="max-w-4xl mx-auto"
+                >
+                  <VideoPlayer 
+                    src="/prez.mp4" 
+                    title="Présentation de Andy KGZ Consulting - Coaching carrière et recrutement" 
+                  />
+                </motion.div>
               </div>
             </AnimatedSection>
           </div>
