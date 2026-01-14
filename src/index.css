@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --background: 40 30% 95%; /* akc-off-white */
+  --foreground: 25 45% 25%; /* Darker version of akc-deep-brown */
+  --card: 40 60% 90%; /* akc-cream */
+  --card-foreground: 25 45% 25%;
+  --popover: 40 60% 90%; /* akc-cream */
+  --popover-foreground: 25 45% 25%;
+  --primary: 30 40% 50%; /* akc-medium-brown */
+  --primary-foreground: 40 30% 95%; /* akc-off-white */
+  --secondary: 35 50% 70%; /* akc-light-tan */
+  --secondary-foreground: 25 45% 25%;
+  --muted: 35 50% 85%; /* Lighter version of akc-light-tan */
+  --muted-foreground: 30 30% 40%; /* Softer brown for muted text */
+  --accent: 25 45% 35%; /* akc-deep-brown */
+  --accent-foreground: 40 30% 95%; /* akc-off-white */
+  --destructive: 0 70% 50%; /* Standard red */
+  --destructive-foreground: 0 0% 100%;
+  --border: 35 40% 80%; /* Softer version of light-tan for borders */
+  --input: 35 40% 85%; /* Similar to border for input backgrounds */
+  --ring: 30 40% 50%; /* akc-medium-brown for focus rings */
+  --radius: 0.75rem; 
+}
+
+.dark {
+  --background: 25 30% 15%; /* Very dark warm brown */
+  --foreground: 35 40% 85%; /* Light tan */
+  --card: 25 30% 20%;
+  --card-foreground: 35 40% 85%;
+  --popover: 25 30% 15%;
+  --popover-foreground: 35 40% 85%;
+  --primary: 30 50% 60%; /* Lighter medium brown */
+  --primary-foreground: 25 30% 10%; /* Very dark brown for text on primary */
+  --secondary: 35 40% 40%; /* Darker light tan */
+  --secondary-foreground: 35 40% 90%;
+  --muted: 30 30% 25%;
+  --muted-foreground: 35 30% 65%;
+  --accent: 25 55% 55%; /* Lighter deep brown */
+  --accent-foreground: 25 30% 10%;
+  --destructive: 0 60% 45%; 
+  --destructive-foreground: 0 0% 100%;
+  --border: 30 30% 30%;
+  --input: 30 30% 25%;
+  --ring: 30 50% 60%; 
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif; 
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background) / 0.5);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.7);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.aspect-w-16 { position: relative; padding-bottom: 56.25%; }
+.aspect-h-9 { } 
+.aspect-w-16 > *, .aspect-h-9 > * { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+}
+
+.title-center-fix {
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 40s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 40s linear infinite;
+}
